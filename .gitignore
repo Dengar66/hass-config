@@ -1,1 +1,10 @@
 .google.token
+secrets.yaml
+*.log*
+
+blueprints
+custom_components
+node-red
+tts
+www/*
+!www/images
