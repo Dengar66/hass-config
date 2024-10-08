@@ -31,6 +31,8 @@ lovelace:
       type: module
     - url: /hacsfiles/Bubble-Card/bubble-card.js
       type: module
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
   dashboards:
     mobile-remote:
       mode: yaml

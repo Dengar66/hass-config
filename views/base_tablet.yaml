@@ -10,12 +10,12 @@ cards:
     cards:
       - type: horizontal-stack
         cards:
-          - type: 'custom:atomic-calendar-revive'
+          - type: "custom:atomic-calendar-revive"
             style: |
               ha-card {
                 max-height: 625px;
               }
-            name: 'Next Two Weeks'
+            name: "Next Two Weeks"
             enableModeChange: true
             entities:
               - entity: calendar.paul_and_ash
@@ -72,15 +72,6 @@ cards:
                 tap_action:
                   action: more-info
                 layout: horizontal
-              #- type: vertical-stack
-              #  cards:
-              #    - type: custom:mushroom-light-card
-              #      entity: light.living_room_lights
-              #      use_light_color: true
-              #      show_brightness_control: true
-              #      show_color_control: true
-              #      collapsible_controls: true
-              #      show_color_temp_control: true
               - type: custom:mushroom-light-card
                 entity: light.all_basement_lights
                 use_light_color: true
@@ -88,24 +79,27 @@ cards:
                 show_color_control: true
                 collapsible_controls: true
                 show_color_temp_control: true
+                hold_action:
+                  action: navigate
+                  navigation_path: /lovelace/basement
               - type: horizontal-stack
                 cards:
                   - type: vertical-stack
                     cards:
                       - type: custom:mushroom-entity-card
-                        name: 'Playroom'
+                        name: "Playroom"
                         tap_action:
                           action: toggle
                         entity: switch.plug_playroom_light
                       - type: custom:mushroom-entity-card
-                        name: 'Dashboard Tablet'
+                        name: "Dashboard Tablet"
                         tap_action:
                           action: toggle
                         entity: switch.plug_kitchen_tablet
                   - type: vertical-stack
                     cards:
                       - type: custom:mushroom-light-card
-                        name: 'Living Room'
+                        name: "Living Room"
                         entity: light.living_room_zone_lights
                         use_light_color: true
                         show_brightness_control: true
@@ -118,13 +112,13 @@ cards:
                 conditions:
                   - condition: state
                     entity: input_boolean.tasks_due
-                    state: 'on'
+                    state: "on"
                 card:
-                    type: custom:mushroom-title-card
-                    title: 'Tasks Today!'
-                    title_tap_action: 
-                      action: navigate
-                      navigation_path: /lovelace/chores
+                  type: custom:mushroom-title-card
+                  title: "Tasks Today!"
+                  title_tap_action:
+                    action: navigate
+                    navigation_path: /lovelace/chores
           - type: vertical-stack
             cards:
               - type: weather-forecast

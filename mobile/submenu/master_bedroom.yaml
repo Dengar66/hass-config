@@ -1,0 +1,61 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#bedroom"
+  - type: custom:mushroom-cover-card
+    entity: cover.master_blinds
+    show_position_control: false
+    show_buttons_control: true
+    tap_action:
+      action: none
+    double_tap_action:
+      action: none
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.bedroom_lamp
+            icon: mdi:lamp
+            use_light_color: true
+          - type: custom:mushroom-entity-card
+            name: "Master TV"
+            tap_action:
+              action: toggle
+            entity: switch.plug_master_tv
+      - type: custom:button-card
+        tap_action:
+          action: call-service
+          service: select.select_option
+          target:
+            entity_id:
+              - select.sleepnumber_master_foundation_preset_left
+          data:
+            option: "Watch TV"
+        name: TV Mode
+        icon: mdi:bed-king-outline
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        tap_action:
+          action: call-service
+          service: select.select_option
+          target:
+            entity_id:
+              - select.sleepnumber_master_foundation_preset_left
+          data:
+            option: "Snore"
+        name: Paul Snore
+        icon: mdi:bed-king-outline
+      - type: custom:button-card
+        tap_action:
+          action: call-service
+          service: select.select_option
+          target:
+            entity_id:
+              - select.sleepnumber_master_foundation_preset_right
+          data:
+            option: "Snore"
+        name: Ash Snore
+        icon: mdi:bed-king-outline

@@ -1,0 +1,20 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#paul"
+  - type: map
+    entities:
+      - entity: person.paul
+    theme_mode: auto
+  - type: custom:button-card
+    tap_action:
+      action: call-service
+      service: select.select_option
+      target:
+        entity_id:
+          - select.sleepnumber_master_foundation_preset_left
+      data:
+        option: Snore
+    name: Snore Mode
+    icon: mdi:bed-king-outline

@@ -1,0 +1,17 @@
+path: map
+title: Map
+icon: mdi:map-marker-radius
+badges: []
+cards:
+  - type: map
+    entities:
+      - entity: device_tracker.paul_s_iphone
+    default_zoom: 12
+    title: PAUL
+    hours_to_show: 6
+  - type: map
+    entities:
+      - entity: device_tracker.ashley_s_iphone
+    title: ASHLEY
+    default_zoom: 12
+    hours_to_show: 6

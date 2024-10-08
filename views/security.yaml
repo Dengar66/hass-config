@@ -1,0 +1,93 @@
+path: security
+title: Security
+icon: mdi:cctv
+cards:
+  - type: custom:layout-card
+    layout_type: custom:masonry-layout
+    layout:
+      max_cols: 1
+      width: 1200
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: camera.blink_front_porch
+                image: https://demo.home-assistant.io/stub_config/bedroom.png
+                camera_image: camera.blink_front_porch
+                tap_action:
+                  action: call-service
+                  service: blink.trigger_camera
+                  service_data: {}
+                  target:
+                    entity_id: camera.blink_front_porch
+                show_state: false
+                name: Front Porch
+              - type: picture-entity
+                entity: camera.blink_driveway
+                image: https://demo.home-assistant.io/stub_config/bedroom.png
+                name: Driveway
+                camera_image: camera.blink_driveway
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: blink.trigger_camera
+                  service_data: {}
+                  target: {}
+              - type: picture-entity
+                entity: camera.blink_back_porch
+                show_state: false
+                name: Back Porch
+                camera_image: camera.blink_back_porch
+                tap_action:
+                  action: call-service
+                  service: script.202205212347
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: ""
+              - type: custom:mushroom-title-card
+                title: "Camera Battery Status"
+              - type: custom:mushroom-title-card
+                title: "Camera WiFi Signal"
+          - type: horizontal-stack
+            cards:
+              - type: alarm-panel
+                states:
+                  - arm_home
+                entity: alarm_control_panel.blink_home
+                name: Blink Cameras
+              - show_name: true
+                show_icon: true
+                show_state: true
+                type: glance
+                entities:
+                  - entity: binary_sensor.blink_front_porch_battery
+                    name: Front Porch
+                  - entity: binary_sensor.blink_driveway_battery
+                    name: Driveway
+                  - entity: binary_sensor.blink_back_porch_battery
+                    name: Back Porch
+                  - entity: binary_sensor.blink_garage_battery
+                    name: Garage
+                columns: 4
+              - show_name: true
+                show_icon: true
+                show_state: true
+                type: glance
+                entities:
+                  - entity: sensor.blink_front_porch_wifi_signal
+                    name: Front Porch
+                  - entity: sensor.blink_driveway_wifi_signal
+                    name: Driveway
+                  - entity: sensor.blink_back_porch_wifi_signal
+                    name: Back Porch
+                  - entity: sensor.blink_garage_wifi_signal
+                    name: Garage
+                columns: 4
+                state_color: false
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: "Last Motion Detected"

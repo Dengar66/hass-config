@@ -1,0 +1,69 @@
+path: basement
+title: Basement Lights
+icon: mdi:lightbulb-group
+cards:
+  - type: custom:layout-card
+    layout_type: custom:masonry-layout
+    layout:
+      max_cols: 1
+      width: 1200
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.cove_left
+                icon: mdi:light-recessed
+                use_light_color: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      --control-height: 12px;
+                    }
+              - type: custom:mushroom-light-card
+                entity: light.cove_middle
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.cove_right
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:gap-card
+                width: 100
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.strip_window
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.strip_middle
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.strip_stairs
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.stair_bookcase
+                icon: mdi:light-recessed
+                use_light_color: true
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.lego_right
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.lego_left
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.basement_couch
+                icon: mdi:light-recessed
+                use_light_color: true
+              - type: custom:mushroom-light-card
+                entity: light.basement_stairs
+                icon: mdi:light-recessed
+                use_light_color: true

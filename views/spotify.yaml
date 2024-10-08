@@ -1,0 +1,326 @@
+path: spotify
+title: Spotify
+icon: mdi:spotify
+cards:
+  - type: custom:layout-card
+    layout_type: custom:masonry-layout
+    layout:
+      max_cols: 1
+      width: 1200
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_1
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_2
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_3
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.playlist_1
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.playlist_2
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_4
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_5
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.daily_mix_6
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.playlist_3
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+              - type: "custom:button-card"
+                entity: sensor.playlist_4
+                show_entity_picture: true
+                show_label: false
+                size: 70%
+                styles:
+                  card:
+                    - height: 200px
+                    - background-color: rgba(0, 0, 0, 0.0)
+                    - box-shadow: "none"
+                  label:
+                    - font-size: 14px
+                  name:
+                    - font-size: 14px
+                name: |
+                  [[[ return entity.attributes.name; ]]]
+                label: |
+                  [[[ return entity.attributes.label; ]]]
+                entity_picture: |
+                  [[[ return entity.attributes.image; ]]]
+                tap_action:
+                  action: call-service
+                  service: spotcast.start
+                  service_data:
+                    #spotify_device_id: |
+                    #  [[[ return entity.attributes.device; ]]]
+                    device_name: "Kitchen Echo Show"
+                    uri: |
+                      [[[ return entity.attributes.url; ]]]
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-media-player"
+                entity: media_player.spotify_home
+                name: Spotify Player
+                icon: mdi:spotify
+                artwork: cover
+                source: full
+                hide:
+                  power: true
+                  progress: true
+                  controls: false
+                  runtime: true
+                  shuffle: false
+                  volume: false
+                info: scroll
+                style: |
+                  ha-card {
+                    height: 250px;
+                  }

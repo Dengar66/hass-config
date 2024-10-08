@@ -1,0 +1,23 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#vacuum"
+  - type: custom:vacuum-card
+    entity: vacuum.roborock_q5_max
+    stats:
+      default:
+        - entity_id: sensor.roborock_q5_max_filter_time_left
+          unit: h
+          subtitle: Filter
+        - entity_id: sensor.roborock_q5_max_side_brush_time_left
+          unit: h
+          subtitle: Side brush
+        - entity_id: sensor.roborock_q5_max_main_brush_time_left
+          unit: h
+          subtitle: Main brush
+        - entity_id: sensor.roborock_q5_max_sensor_time_left
+          unit: h
+          subtitle: Sensors
+  - type: picture
+    image_entity: image.roborock_q5_max_main

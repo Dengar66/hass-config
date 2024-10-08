@@ -1,0 +1,38 @@
+path: mobile
+title: Mobile
+icon: mdi:apple
+cards:
+  - type: vertical-stack
+    cards:
+      # Row 1
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-person-card
+            entity: person.paul
+            icon_type: entity-picture
+            tap_action:
+              action: navigate
+              navigation_path: "#paul"
+          - type: custom:mushroom-person-card
+            entity: person.ashley
+            icon_type: entity-picture
+            tap_action:
+              action: navigate
+              navigation_path: "#ashley"
+      # Row 2
+      - type: horizontal-stack
+        cards:
+          - type: picture
+            image_entity: person.paul
+            tap_action:
+              action: navigate
+              navigation_path: "#bedroom"
+          - type: picture
+            image_entity: person.ashley
+            tap_action:
+              action: navigate
+              navigation_path: "#vacuum"
+  - !include submenu/paul.yaml
+  - !include submenu/ashley.yaml
+  - !include submenu/master_bedroom.yaml
+  - !include submenu/vacuum.yaml
