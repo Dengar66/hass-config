@@ -1,0 +1,30 @@
+'202205212347':
+  alias: Blink Camera Snapshot Back Porch
+  sequence:
+  - entity_id: camera.blink_back_porch
+    service: blink.trigger_camera
+  - delay: 00:00:05
+  - service: blink.blink_update
+  - data:
+      filename: /share/blink/BackPorch/blink_camera_still_image.jpg
+    entity_id: camera.blink_back_porch
+    service: camera.snapshot
+gaming_lights:
+  alias: Gaming Lights
+  sequence:
+  - type: turn_off
+    device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+    entity_id: 879938a09c5604f901849128d5390034
+    domain: light
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.strip_middle
+      - light.strip_stairs
+      - light.hue_play_1
+      - light.hue_play_2
+    data:
+      color_name: midnightblue
+      brightness_pct: 95
+  mode: single
+  icon: mdi:controller

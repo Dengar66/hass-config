@@ -1,0 +1,1009 @@
+- id: '1611525774361'
+  alias: Movie Playing
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.tautulli_playing
+    to: resume
+  - platform: state
+    entity_id: sensor.tautulli_playing
+    to: play
+  condition:
+  - condition: state
+    entity_id: sensor.tautulli_media_type
+    state: movie
+  - condition: sun
+    after: sunset
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.living_room_dim
+    metadata: {}
+  mode: single
+- id: '1611530964183'
+  alias: Movie Stopped
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.tautulli_playing
+    to: stop
+  - platform: state
+    entity_id: sensor.tautulli_playing
+    to: pause
+  condition:
+  - condition: state
+    entity_id: sensor.tautulli_media_type
+    state: movie
+  - condition: sun
+    after: sunset
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.living_room_on
+    metadata: {}
+  mode: single
+- id: '1630458328194'
+  alias: Plug_Kitchen_TabletCharger_Battery
+  description: Turn off the plug for the tablet in the kitchen when battery is over
+    90% and turn it on when the battery drops below 20%
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.firehd10_battery
+    above: '90'
+    id: charged
+  - platform: numeric_state
+    entity_id:
+    - sensor.firehd10_battery
+    below: 20
+    id: dead
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - dead
+      sequence:
+      - type: turn_on
+        device_id: 128b118a620257619f9a448b15379a90
+        entity_id: 48c63404b90b30ae9745d929db96e804
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - charged
+      sequence:
+      - type: turn_off
+        device_id: 128b118a620257619f9a448b15379a90
+        entity_id: 48c63404b90b30ae9745d929db96e804
+        domain: switch
+  mode: single
+- id: '1651068888919'
+  alias: Last Front Porch Motion
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.blink_front_porch_motion_detected
+    from: 'False'
+    to: 'True'
+  condition: []
+  action:
+  - service: input_text.set_value
+    data:
+      value: '{{ as_timestamp(now()) | timestamp_custom("%a %m/%d %H:%M", true) }}'
+    target:
+      entity_id: input_text.front_porch_last_motion
+  mode: single
+- id: '1684556055371'
+  alias: Chore_Watered_Garden
+  description: Handling of buttons for watering the plants in the garden
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.water_carrots
+    from: 'on'
+    to: 'off'
+    id: carrots
+  - platform: state
+    entity_id:
+    - input_boolean.water_peas
+    from: 'on'
+    to: 'off'
+    id: peas
+  - platform: state
+    entity_id:
+    - input_boolean.water_peppers
+    from: 'on'
+    to: 'off'
+    id: peppers
+  - platform: state
+    entity_id:
+    - input_boolean.water_strawberries
+    from: 'on'
+    to: 'off'
+    id: strawbs
+  - platform: state
+    entity_id:
+    - input_boolean.water_tomatoes
+    from: 'on'
+    to: 'off'
+    id: tomats
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - carrots
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ now().strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.last_carrots
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=7)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_carrots
+    - conditions:
+      - condition: trigger
+        id:
+        - peas
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ now().strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.last_peas
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=3)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_peas
+    - conditions:
+      - condition: trigger
+        id:
+        - peppers
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ now().strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.last_peppers
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=3)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_peppers
+    - conditions:
+      - condition: trigger
+        id:
+        - strawbs
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ now().strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.last_strawberries
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=1)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_strawberries
+    - conditions:
+      - condition: trigger
+        id:
+        - tomats
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ now().strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.last_tomatoes
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=1)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_tomatoes
+  mode: single
+- id: '1696390132586'
+  alias: Paul Leaving Sentry
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.paul_s_iphone
+    zone: zone.sentry
+    event: leave
+  condition:
+  - condition: time
+    after: '15:00:00'
+    weekday:
+    - tue
+    - wed
+    - thu
+    before: '18:00:00'
+  action:
+  - device_id: d86d92283852d598ca557feaee65c885
+    domain: mobile_app
+    type: notify
+    message: Paul is on the way home
+  mode: single
+- id: '1699368962720'
+  alias: Light_Master_Bed
+  description: Turn on Bed Light for 10 minutes when someone exits the bed overnight.
+    Will turn off the light if someone gets back in bed and both are in bed.
+  trigger:
+  - type: not_occupied
+    platform: device
+    device_id: 60bde59d2933ba7f6b88e4f028fa106e
+    entity_id: 6f2acb2a0c6d3fdfa7066b452e52231f
+    domain: binary_sensor
+    id: paul_up
+  - type: not_occupied
+    platform: device
+    device_id: 60bde59d2933ba7f6b88e4f028fa106e
+    entity_id: 3e28071f50944d6428a397f9242d1de6
+    domain: binary_sensor
+    id: ashley_up
+  - type: occupied
+    platform: device
+    device_id: 60bde59d2933ba7f6b88e4f028fa106e
+    entity_id: 6f2acb2a0c6d3fdfa7066b452e52231f
+    domain: binary_sensor
+    id: paul_bed
+  - type: occupied
+    platform: device
+    device_id: 60bde59d2933ba7f6b88e4f028fa106e
+    entity_id: 3e28071f50944d6428a397f9242d1de6
+    domain: binary_sensor
+    id: ashley_bed
+  condition:
+  - condition: time
+    after: '22:00:00'
+    before: 06:00:00
+    weekday:
+    - sun
+    - mon
+    - tue
+    - thu
+    - wed
+    - fri
+    - sat
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - ashley_up
+        - paul_up
+      sequence:
+      - type: turn_on
+        device_id: 60bde59d2933ba7f6b88e4f028fa106e
+        entity_id: a64cec2ff1a7ebef605c64a98ecc68c5
+        domain: light
+      - delay:
+          hours: 0
+          minutes: 10
+          seconds: 0
+          milliseconds: 0
+      - type: turn_off
+        device_id: 60bde59d2933ba7f6b88e4f028fa106e
+        entity_id: a64cec2ff1a7ebef605c64a98ecc68c5
+        domain: light
+    - conditions:
+      - condition: trigger
+        id:
+        - paul_bed
+        - ashley_bed
+      - type: is_occupied
+        condition: device
+        device_id: 60bde59d2933ba7f6b88e4f028fa106e
+        entity_id: 6f2acb2a0c6d3fdfa7066b452e52231f
+        domain: binary_sensor
+      - type: is_occupied
+        condition: device
+        device_id: 60bde59d2933ba7f6b88e4f028fa106e
+        entity_id: 3e28071f50944d6428a397f9242d1de6
+        domain: binary_sensor
+      sequence:
+      - type: turn_off
+        device_id: 60bde59d2933ba7f6b88e4f028fa106e
+        entity_id: a64cec2ff1a7ebef605c64a98ecc68c5
+        domain: light
+  mode: single
+- id: '1699412563992'
+  alias: Sensor_BasementStairs_Opened
+  description: Opening the basement door
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 70b85c25e49b84cda78dfe01375ebb0c
+    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    domain: binary_sensor
+  - platform: state
+    entity_id:
+    - binary_sensor.0x00158d0009ea3f55_contact
+    from: 'off'
+    to: 'on'
+    enabled: true
+  condition:
+  - condition: time
+    after: '17:00:00'
+    before: 07:00:00
+    enabled: true
+  - condition: or
+    conditions:
+    - condition: time
+      after: '17:00:00'
+      before: 07:00:00
+    - condition: time
+      after: 09:00:00
+      before: 05:00:00
+  action:
+  - type: turn_on
+    device_id: a9d308a70886cf641cd428a93e944f73
+    entity_id: 3d9be0e7622c837add41b157327e139c
+    domain: light
+  - type: turn_on
+    device_id: 3b3ad659e3acac2b582f3770543b4675
+    entity_id: b2daeebc7626ff71d045723fdcc65ffc
+    domain: light
+  - type: turn_on
+    device_id: 604c06414fdfc4008f46048eb36cbc4b
+    entity_id: b735dff6ba7654aba9f1abbb163cb9bb
+    domain: light
+  mode: single
+- id: '1699454526040'
+  alias: Sensor_BasementStairs_Opened_Work
+  description: Opened the basement door on a workday
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 70b85c25e49b84cda78dfe01375ebb0c
+    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    domain: binary_sensor
+  condition:
+  - condition: time
+    after: 07:00:00
+    before: 09:00:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  - condition: device
+    type: is_off
+    device_id: 483faa80fc894d0e31f065185ef7013d
+    entity_id: 9c704f01dde5587028b99ebc3b691104
+    domain: light
+  action:
+  - type: turn_off
+    device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+    entity_id: 879938a09c5604f901849128d5390034
+    domain: light
+  - service: scene.turn_on
+    target:
+      entity_id: scene.ashley_work_white
+    metadata: {}
+  mode: single
+- id: '1699454742061'
+  alias: Sensor_BasementStairs_Closed
+  description: Closing the basement door
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 70b85c25e49b84cda78dfe01375ebb0c
+    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    domain: binary_sensor
+  condition:
+  - condition: or
+    conditions:
+    - condition: time
+      after: '17:00:00'
+      before: 07:00:00
+      weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+    - condition: time
+      after: 07:00:00
+      before: '17:00:00'
+      weekday:
+      - sun
+      - sat
+  action:
+  - type: turn_off
+    device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+    entity_id: 879938a09c5604f901849128d5390034
+    domain: light
+  mode: single
+- id: '1699732539200'
+  alias: Sensor_ExteriorDoor_Opened
+  description: Exterior Door is opened when nobody is at home or overnight
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 461f669ddfb56be8737432651c643119
+    entity_id: 02904212e979c2037a325f92ba460d8c
+    domain: binary_sensor
+    id: front
+  - type: opened
+    platform: device
+    device_id: 4d9821e62f97fb6489f969d32b45e257
+    entity_id: b499948ae06666be00b03aa47d5dd170
+    domain: binary_sensor
+    id: porch
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - front
+      - condition: or
+        conditions:
+        - condition: and
+          conditions:
+          - condition: state
+            entity_id: person.paul
+            state: not_home
+          - condition: state
+            entity_id: person.ashley
+            state: not_home
+        - condition: time
+          after: '23:30:00'
+          before: 05:30:00
+      sequence:
+      - service: notify.mobile_app_paul_s_iphone
+        data:
+          message: Front Door Opened
+      - service: notify.mobile_app_ashley_s_iphone
+        data:
+          message: Front Door Opened
+    - conditions:
+      - condition: trigger
+        id:
+        - porch
+      - condition: or
+        conditions:
+        - condition: and
+          conditions:
+          - condition: state
+            entity_id: person.paul
+            state: not_home
+          - condition: state
+            entity_id: person.ashley
+            state: not_home
+        - condition: time
+          after: '23:30:00'
+          before: 05:30:00
+      sequence:
+      - service: notify.mobile_app_paul_s_iphone
+        data:
+          message: Porch Door Opened
+      - service: notify.mobile_app_ashley_s_iphone
+        data:
+          message: Porch Door Opened
+  mode: single
+- id: '1702428220009'
+  alias: Chore_Complete_Household
+  description: When a chore is completed on the dashboard this will set the next date
+    that the chore needs to be completed.
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.change_brita
+    from: 'off'
+    to: 'on'
+    id: brita
+  - platform: state
+    entity_id:
+    - input_boolean.descale_coffee
+    from: 'off'
+    to: 'on'
+    id: descale
+  - platform: state
+    entity_id:
+    - input_boolean.apply_fleatick
+    from: 'off'
+    to: 'on'
+    id: fleatick
+  - platform: state
+    entity_id:
+    - input_boolean.change_furnacefilter
+    from: 'off'
+    to: 'on'
+    id: furnace
+  - platform: state
+    entity_id:
+    - input_boolean.apply_heartworm
+    from: 'off'
+    to: 'on'
+    id: heartworm
+  - platform: state
+    entity_id:
+    - input_boolean.takeout_garbage
+    from: 'off'
+    to: 'on'
+    id: garbage
+  - platform: state
+    entity_id:
+    - input_boolean.takeout_recycle
+    from: 'off'
+    to: 'on'
+    id: recycle
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - brita
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=183)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_brita
+      - service: input_boolean.toggle
+        target:
+          entity_id:
+          - input_boolean.change_brita
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - descale
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=90)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_descaling
+      - service: input_boolean.toggle
+        target:
+          entity_id:
+          - input_boolean.descale_coffee
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - fleatick
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=30)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_fleatick
+      - service: input_boolean.toggle
+        data: {}
+        target:
+          entity_id: input_boolean.apply_fleatick
+    - conditions:
+      - condition: trigger
+        id:
+        - furnace
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=150)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_furnacefilter
+      - service: input_boolean.toggle
+        data: {}
+        target:
+          entity_id: input_boolean.change_furnacefilter
+    - conditions:
+      - condition: trigger
+        id:
+        - heartworm
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (now() + timedelta(days=30)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_heartworm
+      - service: input_boolean.toggle
+        data: {}
+        target:
+          entity_id: input_boolean.apply_heartworm
+    - conditions:
+      - condition: trigger
+        id:
+        - garbage
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (strptime(states(''input_datetime.next_garbage''), ''%Y-%m-%d'')
+            + timedelta(days=7)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_garbage
+      - service: input_boolean.toggle
+        data: {}
+        target:
+          entity_id: input_boolean.takeout_garbage
+    - conditions:
+      - condition: trigger
+        id:
+        - recycle
+      sequence:
+      - service: input_datetime.set_datetime
+        data:
+          date: '{{ (strptime(states(''input_datetime.next_recycle''), ''%Y-%m-%d'')
+            + timedelta(days=14)).strftime(''%Y-%m-%d'') }}'
+        target:
+          entity_id: input_datetime.next_recycle
+      - service: input_boolean.toggle
+        data: {}
+        target:
+          entity_id: input_boolean.takeout_recycle
+  - service: input_boolean.turn_off
+    target:
+      entity_id:
+      - input_boolean.tasks_due
+      device_id: []
+      area_id: []
+    data: {}
+  mode: single
+- id: '1702731777154'
+  alias: Garage_Open_Warning
+  description: Send Notification when garage door open for 5 minutes
+  trigger:
+  - platform: state
+    entity_id:
+    - cover.garage_door
+    from:
+    to: open
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - service: notify.mobile_app_paul_s_iphone
+    data:
+      message: Garage Open for 5 minutes
+  - service: notify.mobile_app_ashley_s_iphone
+    data:
+      message: Garage Open for 5 minutes
+  mode: single
+- id: '1713832047830'
+  alias: Switch_Basement
+  description: Handles the various actions of the double switch in the basement at
+    bottom of the stairs
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: a5ee4d119eead504759902cc2d99c4ea
+    type: action
+    subtype: double_left
+    discovery_id: 0x00158d000808440f action_double_left
+    id: d_left
+  - platform: device
+    domain: mqtt
+    device_id: a5ee4d119eead504759902cc2d99c4ea
+    type: action
+    subtype: double_right
+    id: d_right
+  - platform: device
+    domain: mqtt
+    device_id: a5ee4d119eead504759902cc2d99c4ea
+    type: action
+    subtype: hold_left
+    id: h_left
+  - platform: device
+    domain: mqtt
+    device_id: a5ee4d119eead504759902cc2d99c4ea
+    type: action
+    subtype: single_left
+    id: s_left
+  - platform: device
+    domain: mqtt
+    device_id: a5ee4d119eead504759902cc2d99c4ea
+    type: action
+    subtype: single_right
+    id: s_right
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+    entity_id: 879938a09c5604f901849128d5390034
+    domain: light
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - d_left
+      sequence:
+      - service: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.basement_relax
+    - conditions:
+      - condition: trigger
+        id:
+        - d_right
+      sequence:
+      - service: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.board_games_concentrate
+    - conditions:
+      - condition: trigger
+        id:
+        - s_left
+      sequence:
+      - service: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.basement_read
+    - conditions:
+      - condition: trigger
+        id:
+        - s_right
+      sequence:
+      - service: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.ashley_work_white
+  mode: single
+- id: '1719977131825'
+  alias: 0_GoodMorning
+  description: Daily Morning Automation
+  trigger:
+  - platform: time
+    at: 05:30:00
+    id: '530'
+  - platform: time
+    at: 06:00:00
+    id: '600'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - '530'
+      sequence:
+      - device_id: 3795ccc4021380b9b722f9f17a5028f1
+        domain: cover
+        entity_id: f2263d592224161b948d30b9b32447cb
+        type: open
+      - if:
+        - condition: template
+          value_template: '{{
+
+            as_timestamp(now()) > as_timestamp(states(''input_datetime.next_garbage''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_recycle''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_heartworm''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_fleatick''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_brita''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_descaling''))
+
+            or as_timestamp(now()) > as_timestamp(states(''input_datetime.next_furnacefilter''))
+
+            }}'
+        then:
+        - metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.tasks_due
+          action: input_boolean.turn_on
+    - conditions:
+      - condition: trigger
+        id:
+        - '600'
+      sequence:
+      - action: cover.open_cover
+        metadata: {}
+        data: {}
+        target:
+          device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+  mode: single
+- id: '1719977190112'
+  alias: 0_GoodNight
+  description: Daily Nighttime Automation
+  trigger:
+  - platform: time
+    at: '20:30:00'
+    id: early
+  - platform: time
+    at: '21:30:00'
+    id: first
+  - platform: time
+    at: '23:00:00'
+    id: second
+  - platform: time
+    at: 01:00:00
+    id: third
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - early
+      sequence:
+      - if:
+        - condition: device
+          device_id: a01a6a378c0f13a86acf7f11fdc6c763
+          domain: climate
+          entity_id: f36179d541ba48c13477f9a5e83aa1c2
+          type: is_hvac_mode
+          hvac_mode: 'off'
+        then:
+        - action: cover.set_cover_position
+          metadata: {}
+          data:
+            position: 50
+          target:
+            device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+        else:
+        - action: cover.close_cover
+          metadata: {}
+          data: {}
+          target:
+            device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+    - conditions:
+      - condition: trigger
+        id:
+        - first
+      sequence:
+      - device_id: 3795ccc4021380b9b722f9f17a5028f1
+        domain: cover
+        entity_id: f2263d592224161b948d30b9b32447cb
+        type: close
+    - conditions:
+      - condition: trigger
+        id:
+        - second
+      sequence:
+      - type: turn_off
+        device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+        entity_id: 879938a09c5604f901849128d5390034
+        domain: light
+      - type: turn_off
+        device_id: 444a3d55738548ae28f2ecba7d8afda5
+        entity_id: 6ce0949ebc1184d5570d3018a53c6cf6
+        domain: switch
+      - type: turn_off
+        device_id: 4ee18b7b6a9d6b060210943a0c7a8c32
+        entity_id: 53b17d08edc7bfc5a7480d84d8b50f9e
+        domain: light
+      - type: turn_off
+        device_id: 4e119dd525201d40af2da00a28f8e949
+        entity_id: 9ccd13d5d2b849a2769e467f74e1deac
+        domain: switch
+      - type: turn_off
+        device_id: 44215a8baf82d30aab7431d12c9e7ad5
+        entity_id: 611776aa34b86fc9b4ab97dcd23e74fa
+        domain: light
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.has_hazel_been_fed
+    - conditions:
+      - condition: trigger
+        id:
+        - third
+      sequence:
+      - metadata: {}
+        data: {}
+        target:
+          entity_id: switch.tree
+        action: switch.turn_off
+  mode: single
+- id: '1721602046255'
+  alias: LeakSensor_WaterDetected
+  description: Triggered when any of the leak sensors become moist. Will alert to
+    which leak sensor has the issue.
+  trigger:
+  - type: moist
+    platform: device
+    device_id: b92fae37a170cfec5eb35ee3178b8f1d
+    entity_id: 2fde4ba06cc1c0f5adc4b881d1e8f8b4
+    domain: binary_sensor
+    id: laundry_sink
+  - type: moist
+    platform: device
+    device_id: 91ee8b66fea82836a5c6cfeca24ec47b
+    entity_id: 700f5e8a8d7da3b9959160fdef75820d
+    domain: binary_sensor
+    id: water_heater
+  - type: moist
+    platform: device
+    device_id: 7b3ba5d02db3f8856765b8e2cd995782
+    entity_id: df265d56ec32e8e5f4e2caf052e140f0
+    domain: binary_sensor
+    id: water_main
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - laundry_sink
+      sequence:
+      - service: notify.mobile_app_paul_s_iphone
+        metadata: {}
+        data:
+          message: Water detected at the Laundry Sink!
+    - conditions:
+      - condition: trigger
+        id:
+        - water_heater
+      sequence:
+      - service: notify.mobile_app_paul_s_iphone
+        metadata: {}
+        data:
+          message: Water detected at the Water Heater!
+    - conditions:
+      - condition: trigger
+        id:
+        - water_main
+      sequence:
+      - service: notify.mobile_app_paul_s_iphone
+        metadata: {}
+        data:
+          message: Water detected in the water main closet!
+  mode: single
+- id: '1721606025826'
+  alias: 0_GoodEvening
+  description: Daily Evening Automation
+  trigger:
+  - platform: time
+    at: '17:00:00'
+  condition: []
+  action:
+  - if:
+    - condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    then:
+    - type: turn_off
+      device_id: 03e9b5ca05e47d0a2558da76ed7a727c
+      entity_id: 879938a09c5604f901849128d5390034
+      domain: light
+  - service: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.tree
+    enabled: false
+  mode: single
+- id: '1728346617282'
+  alias: 0_GoodAfternoon
+  description: Daily Afternoon Automation
+  trigger:
+  - platform: time
+    at: '12:00:00'
+    id: '1200'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - '1200'
+      sequence:
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.has_hazel_been_fed
+        data: {}
+  mode: single

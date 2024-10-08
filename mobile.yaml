@@ -1,0 +1,3 @@
+title: Mobile Dashboard
+views:
+  - !include views/mobile_home.yaml

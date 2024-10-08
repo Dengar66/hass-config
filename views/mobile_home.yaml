@@ -1,0 +1,59 @@
+path: mobile
+title: Mobile
+icon: mdi:apple
+cards:
+  #  - type: custom:layout-card
+  #    layout_type: custom:masonry-layout
+  #    layout:
+  #      max_cols: 1
+  #      width: 800
+  #    cards:
+  - type: vertical-stack
+    cards:
+      # Row 1
+      - type: horizontal-stack
+        cards:
+          - type: picture
+            image_entity: person.paul
+            tap_action:
+              action: navigate
+              navigation_path: "#basement"
+          - type: picture
+            image_entity: person.ashley
+            tap_action:
+              action: navigate
+              navigation_path: "#living"
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#basement"
+      - type: custom:mushroom-light-card
+        entity: light.strip_window
+        icon: mdi:light-recessed
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: light.strip_middle
+        icon: mdi:light-recessed
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: light.strip_stairs
+        icon: mdi:light-recessed
+        use_light_color: true
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: "#living"
+      - type: custom:mushroom-light-card
+        entity: light.strip_window
+        icon: mdi:light-recessed
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: light.strip_middle
+        icon: mdi:light-recessed
+        use_light_color: true
+      - type: custom:mushroom-light-card
+        entity: light.strip_stairs
+        icon: mdi:light-recessed
+        use_light_color: true

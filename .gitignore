@@ -1,7 +1,12 @@
 .google.token
+.HA_VERSION
+google_calendars.yaml
 secrets.yaml
+
+*.db*
 *.log*
 
+.storage
 blueprints
 custom_components
 node-red

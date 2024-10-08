@@ -1,0 +1,121 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+#homeassistant:
+#whitelist_external_dirs:
+#  - "/share"
+
+# Lovelace Dashboard Mode, remove to no longer use YAML
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/sidebar-card/sidebar-card.js
+      type: module
+    - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/spotify-card/spotify-card.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/Home-Assistant-Mail-And-Packages-Custom-Card/Home-Assistant-Mail-And-Packages-Custom-Card.js
+      type: module
+    - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
+      type: module
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
+      type: module
+    - url: /hacsfiles/lovelace-thermostat-dark-card/thermostat-dark-card.js
+      type: module
+    - url: /hacsfiles/Bubble-Card/bubble-card.js
+      type: module
+  dashboards:
+    mobile-remote:
+      mode: yaml
+      title: Remote
+      icon: mdi:remote-tv
+      show_in_sidebar: true
+      filename: mobile-remote.yaml
+    lovelace-yaml:
+      mode: yaml
+      title: YAML
+      icon: mdi:script
+      show_in_sidebar: true
+      filename: dashboards.yaml
+    mobile-yaml:
+      mode: yaml
+      title: Mobile
+      icon: mdi:apple
+      show_in_sidebar: true
+      filename: mobile.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# HTTPS
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 10.0.1.13
+    - 10.0.1.14
+    - 10.0.1.15
+    - 10.0.1.16
+    - 10.0.1.66
+  ip_ban_enabled: true
+  login_attempts_threshold: 2
+
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+
+# Spotcast
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
+
+alexa:
+  smart_home:
+
+# Mosquito Tautulli
+mqtt:
+  sensor:
+    - name: tautulli_playing
+      state_topic: tautulli/playing
+      value_template: "{{ value_json.body }}"
+    - name: tautulli_media_type
+      state_topic: tautulli/type
+      value_template: "{{ value_json.body }}"
+    - name: firehd10_battery
+      state_topic: wallpanel/firehd10sensor/battery
+      value_template: "{{ value_json.value }}"
+
+sensor:
+  - platform: time_date
+    display_options:
+      - "time"
+      - "date"
+      - "date_time"
+      - "time_date"
+
+template:
+  - sensor:
+      - name: "Spotify Echo Show"
+        state: "7df31662-59b2-40dd-8725-f718c098014e"
+  - sensor:
+      - name: "harmony_yamaha"
+        state: "74567895"
+  - sensor:
+      - name: "harmony_lgc2"
+        state: "78917962"
+  - sensor:
+      - name: "harmony_appletv"
+        state: "79006490"

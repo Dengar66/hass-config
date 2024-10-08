@@ -1,0 +1,103 @@
+- id: '1611525267605'
+  name: Living Room On
+  entities:
+    light.living_room_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 44.835
+      - 71.373
+      rgb_color:
+      - 255
+      - 208
+      - 72
+      xy_color:
+      - 0.486
+      - 0.446
+      effect: none
+      friendly_name: Living Room Lamp
+      supported_features: 63
+      state: 'on'
+- id: '1611525420474'
+  name: Living Room Dim
+  entities:
+    light.living_room_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 89
+      hs_color:
+      - 44.262
+      - 71.765
+      rgb_color:
+      - 255
+      - 206
+      - 71
+      xy_color:
+      - 0.488
+      - 0.444
+      effect: none
+      friendly_name: Living Room Lamp
+      supported_features: 63
+      state: 'on'
+- id: '1611525478870'
+  name: Living Room Off
+  entities:
+    light.living_room_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Living Room Lamp
+      supported_features: 63
+      state: 'off'
+- id: '1686537013674'
+  name: Ashley Work White
+  entities:
+    light.ashley_work:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      is_hue_group: true
+      hue_scenes: []
+      hue_type: zone
+      lights:
+      - Strip Middle
+      - Cove Left
+      - Cove Right
+      - Strip Window
+      - Strip Stairs
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Ashley Work
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 255
+      hs_color:
+      - 26.728
+      - 26.434
+      rgb_color:
+      - 255
+      - 217
+      - 187
+      xy_color:
+      - 0.394
+      - 0.357
+      color_temp_kelvin: 4504
+      color_temp: 222
+      state: 'on'
+  icon: mdi:briefcase
+  metadata:
+    light.ashley_work:
+      entity_only: true

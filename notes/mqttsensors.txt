@@ -1,0 +1,6 @@
+MQTT Sensors
+Topic : Content
+wallpanel/firehd10connection : offline
+wallpanel/firehd10state : {"currentUrl":"https:\/\/thanksmister.github.io\/wallpanel-android\/","screenOn":false,"camera":false,"brightness":89}
+wallpanel/firehd10sensor/battery : {"value":56,"unit":"%","charging":false,"acPlugged":false,"usbPlugged":false}
+wallpanel/firehd10sensor/light : {"value":1,"unit":"lx","id":"LIGHT"}
