@@ -1,7 +1,107 @@
 [
   {
+    "name": "Beer",
+    "id": "4c6ba7a0684a4d369d42ead6e9a557ce",
+    "complete": true
+  },
+  {
+    "name": "Banana",
+    "id": "0f73e77fe4584ce1a5fc931c91cabeca",
+    "complete": true
+  },
+  {
+    "name": "Blueberries",
+    "id": "67eb10e5a36948ea99f3cda9f595902b",
+    "complete": true
+  },
+  {
+    "name": "Strawberries",
+    "id": "bf0fe86f7960458da8e2ec07f1ce10ad",
+    "complete": true
+  },
+  {
+    "name": "Oranges",
+    "id": "b59ecb53b87e4d61bfeec0111f964eab",
+    "complete": true
+  },
+  {
     "name": "Milk",
     "id": "a3aa599194154e47bca233f743070720",
+    "complete": true
+  },
+  {
+    "name": "Pizza",
+    "id": "9f8c7a0eabe44e3a956a0375b9f2a6f0",
+    "complete": true
+  },
+  {
+    "name": "Eggs",
+    "id": "3b1860da9f8f41fc961da265bafa0bcc",
+    "complete": true
+  },
+  {
+    "name": "Paper Towel",
+    "id": "6683afa392e54b68bef4eab1fbfa5b53",
+    "complete": true
+  },
+  {
+    "name": "Tide",
+    "id": "90d5b73b71644d25bcefdb3954e5105b",
+    "complete": true
+  },
+  {
+    "name": "Arm & Hammer",
+    "id": "31a83d9749c54fd6bdc91be474687c29",
+    "complete": true
+  },
+  {
+    "name": "Dog Food",
+    "id": "d7645e9fc50e484eb45efb0c7185da53",
+    "complete": true
+  },
+  {
+    "name": "Softener Salt",
+    "id": "aaade26ccb11451f98887a51edfbe419",
+    "complete": true
+  },
+  {
+    "name": "Frozen Chicken Breast Nugs",
+    "id": "439a7547be2b4350af315636a79db657",
+    "complete": true
+  },
+  {
+    "name": "Breakfast Sammies",
+    "id": "bb022437a4264c7db9d86825f0fd688b",
     "complete": false
+  },
+  {
+    "name": "Anti Bacterial Soap",
+    "id": "cc0ddd6a7c094d1996a82b365a115dbc",
+    "complete": true
+  },
+  {
+    "name": "Clear garbage bags",
+    "id": "9200529e9a82443492eac5779f8ce2aa",
+    "complete": true
+  },
+  {
+    "name": "Pizza roll",
+    "id": "ab8c4aea9a854ffda7a075f2a65d88b3",
+    "complete": true
+  },
+  {
+    "name": "salad ",
+    "id": "6fb29b0fc0ea48f7b16570be09e2caca",
+    "complete": true
+  },
+  {
+    "name": "Corn dogs",
+    "id": "91ea2ea01f1145d79825e6e24fc8f157",
+    "complete": true
+  },
+  {
+    "name": "Cheerios",
+    "id": "ae098c9f63bc402991155ac490e8a200",
+    "complete": true
   }
 ]

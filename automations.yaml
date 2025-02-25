@@ -677,40 +677,40 @@
   alias: Switch_Basement
   description: Handles the various actions of the double switch in the basement at
     bottom of the stairs
-  trigger:
-  - platform: device
-    domain: mqtt
+  triggers:
+  - domain: mqtt
     device_id: a5ee4d119eead504759902cc2d99c4ea
     type: action
     subtype: double_left
     discovery_id: 0x00158d000808440f action_double_left
     id: d_left
-  - platform: device
-    domain: mqtt
+    trigger: device
+  - domain: mqtt
     device_id: a5ee4d119eead504759902cc2d99c4ea
     type: action
     subtype: double_right
     id: d_right
-  - platform: device
-    domain: mqtt
+    trigger: device
+  - domain: mqtt
     device_id: a5ee4d119eead504759902cc2d99c4ea
     type: action
     subtype: hold_left
     id: h_left
-  - platform: device
-    domain: mqtt
+    trigger: device
+  - domain: mqtt
     device_id: a5ee4d119eead504759902cc2d99c4ea
     type: action
     subtype: single_left
     id: s_left
-  - platform: device
-    domain: mqtt
+    trigger: device
+  - domain: mqtt
     device_id: a5ee4d119eead504759902cc2d99c4ea
     type: action
     subtype: single_right
     id: s_right
-  condition: []
-  action:
+    trigger: device
+  conditions: []
+  actions:
   - type: turn_off
     device_id: 03e9b5ca05e47d0a2558da76ed7a727c
     entity_id: 879938a09c5604f901849128d5390034
@@ -721,37 +721,42 @@
         id:
         - d_left
       sequence:
-      - service: scene.turn_on
-        metadata: {}
+      - metadata: {}
         target:
           entity_id: scene.basement_relax
+        action: scene.turn_on
+        data: {}
     - conditions:
       - condition: trigger
         id:
         - d_right
       sequence:
-      - service: scene.turn_on
-        metadata: {}
+      - metadata: {}
         target:
           entity_id: scene.board_games_concentrate
+        action: scene.turn_on
+        data: {}
     - conditions:
       - condition: trigger
         id:
         - s_left
       sequence:
-      - service: scene.turn_on
-        metadata: {}
+      - metadata: {}
         target:
           entity_id: scene.basement_read
+        action: scene.turn_on
+        data: {}
     - conditions:
       - condition: trigger
         id:
         - s_right
       sequence:
-      - service: scene.turn_on
-        metadata: {}
+      - metadata: {}
         target:
-          entity_id: scene.ashley_work_white
+          entity_id:
+          - scene.ashley_work_read
+        action: scene.turn_on
+        data: {}
   mode: single
 - id: '1719977131825'
   alias: 0_GoodMorning
@@ -814,21 +819,21 @@
 - id: '1719977190112'
   alias: 0_GoodNight
   description: Daily Nighttime Automation
-  trigger:
-  - platform: time
-    at: '20:30:00'
+  triggers:
+  - at: '20:30:00'
     id: early
-  - platform: time
-    at: '21:30:00'
+    trigger: time
+  - at: '21:30:00'
     id: first
-  - platform: time
-    at: '23:00:00'
+    trigger: time
+  - at: '23:00:00'
     id: second
-  - platform: time
-    at: 01:00:00
+    trigger: time
+  - at: 01:00:00
     id: third
-  condition: []
-  action:
+    trigger: time
+  conditions: []
+  actions:
   - choose:
     - conditions:
       - condition: trigger
@@ -855,15 +860,15 @@
           data: {}
           target:
             device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
-    - conditions:
-      - condition: trigger
-        id:
-        - first
-      sequence:
       - device_id: 3795ccc4021380b9b722f9f17a5028f1
         domain: cover
         entity_id: f2263d592224161b948d30b9b32447cb
         type: close
+    - conditions:
+      - condition: trigger
+        id:
+        - first
+      sequence: []
     - conditions:
       - condition: trigger
         id:

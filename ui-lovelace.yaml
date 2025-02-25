@@ -1,5 +1,82 @@
 title: Brindley
 views:
+#   - path: info
+#     title: Info
+#     icon: mdi:information
+#     cards:
+#       - type: custom:layout-card
+#         layout_type: custom:masonry-layout
+#         layout:
+#           max_cols: 1
+#           width: 1200
+#         cards:
+#           - type: horizontal-stack
+#             cards:
+#               - type: markdown
+#                 content: >-
+#                   You can use the tab at top of this app that looks like a house to
+#                   control most of the lights and other things. The light in the playroom
+#                   can only be turned on from here.
+
+
+#                   Hazel has 1 cup of food in the morning and 1 cup of food around 4pm.
+
+
+#                   Kate's food:
+
+#                   - Still cut up food into bite size pieces, she is getting better at
+#                   chewing
+
+#                   - She really likes
+#                     - Scrambled eggs
+#                     - Cheerios and Kix for snacks
+#                     - Bananas (sliced and halved), Strawberries (cut up) and Blueberries (smushed flat)
+
+
+#                   Warnings:
+#                     - Still like to go for Hazel's food and water so may need to put them up on the table or garbage cans
+#                     - Trying to climb on everything
+
+
+#                   Things to do:
+#                     - Madison Children's Museum - we are members under Paul Hurlbut
+#                     - Olbrich Botanical Garden Conservancy - indoor garden
+#                     - Verona Public Library
+#                     - Black Earth Children's Museum
+                    
+                    
+#                   If needed, we are staying at the Valentin Imperial Riviera Maya
+#               - type: markdown
+#                 content: >-
+#                   If you need to change the temperature you can click on the thermostat
+#                   and adjust it up or down. It will automatically switch back at 7pm if
+#                   you change it before then. If you change it after 7pm please manually
+#                   change it back before bed so Kate's room doesn't get too hot.
+
+
+#                   Alexa Commands:
+#                     - Turn on/off TV by "turn on/off the Telly"
+#                     - Turn on/off Living Room Lights by "turn on/off Living Room"
+
+
+#                   Easiest to operate the TV with the universal remote. You can also turn
+#                   on/off the TV with the remote using "The Telly" option in Actvities.
+#                   If that remote is giving you trouble, all the individual system
+#                   remotes are in the drawer in the table at end of couch. Use the
+#                   AppleTV for all the apps. We have:
+#                     - Disney+
+#                     - Amazon Prime Video
+#                     - YouTube Premium (use Ashley's profile)
+#                     - Plex (variety of movies / tv shows)
+
+
+#                   Notes:
+#                     - Batteries are on shelf in bookcase near the server rack in the basement back room
+#                     - Use delicate cycle for washing/drying Kate's clothes, remove the pillow from her sleep sack if washing it
+#                     - TV in the bedroom is only logged into Plex, but lots of TV shows on there
+#                     - Kcups are in cabinet under coffee maker
+#                     - Most of the frozen food (like pizza) is in the basement chest freezer. Beverages are also in fridge in basement
+#                     - Bath towels and extra linen for the bed can be found in the hallway closet across from Kate's room
   - !include views/base_tablet.yaml
   - !include views/chores.yaml
   - !include views/plants.yaml
