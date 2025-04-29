@@ -1,46 +1,59 @@
 - id: '1611525774361'
   alias: Movie Playing
   description: ''
-  trigger:
-  - platform: state
-    entity_id: sensor.tautulli_playing
+  triggers:
+  - entity_id: sensor.tautulli_playing
     to: resume
-  - platform: state
-    entity_id: sensor.tautulli_playing
+    trigger: state
+  - entity_id: sensor.tautulli_playing
     to: play
-  condition:
-  - condition: state
-    entity_id: sensor.tautulli_media_type
-    state: movie
-  - condition: sun
-    after: sunset
-  action:
-  - service: scene.turn_on
+    trigger: state
+  conditions:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: sensor.tautulli_media_type
+      state: movie
+    - condition: sun
+      after: sunset
+  actions:
+  - metadata: {}
+    action: scene.turn_on
+    data:
+      transition: 10
     target:
-      entity_id: scene.living_room_dim
+      entity_id:
+      - scene.living_room_nightlight
+  - action: light.turn_on
     metadata: {}
+    data:
+      brightness_pct: 40
+    target:
+      entity_id: light.living_room_zone_lights
   mode: single
 - id: '1611530964183'
   alias: Movie Stopped
   description: ''
-  trigger:
-  - platform: state
-    entity_id: sensor.tautulli_playing
+  triggers:
+  - entity_id: sensor.tautulli_playing
     to: stop
-  - platform: state
-    entity_id: sensor.tautulli_playing
+    trigger: state
+  - entity_id: sensor.tautulli_playing
     to: pause
-  condition:
+    trigger: state
+  conditions:
   - condition: state
     entity_id: sensor.tautulli_media_type
     state: movie
   - condition: sun
     after: sunset
-  action:
-  - service: scene.turn_on
+  actions:
+  - metadata: {}
+    action: scene.turn_on
+    data:
+      transition: 10
     target:
-      entity_id: scene.living_room_on
-    metadata: {}
+      entity_id: scene.living_room_relax
   mode: single
 - id: '1630458328194'
   alias: Plug_Kitchen_TabletCharger_Battery
@@ -315,19 +328,13 @@
 - id: '1699412563992'
   alias: Sensor_BasementStairs_Opened
   description: Opening the basement door
-  trigger:
+  triggers:
   - type: opened
-    platform: device
-    device_id: 70b85c25e49b84cda78dfe01375ebb0c
-    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    device_id: 5e1f92ea07a267dc04bd66b426decc46
+    entity_id: 9858b27789cb623bed3f5c73eb244ed9
     domain: binary_sensor
-  - platform: state
-    entity_id:
-    - binary_sensor.0x00158d0009ea3f55_contact
-    from: 'off'
-    to: 'on'
-    enabled: true
-  condition:
+    trigger: device
+  conditions:
   - condition: time
     after: '17:00:00'
     before: 07:00:00
@@ -340,7 +347,7 @@
     - condition: time
       after: 09:00:00
       before: 05:00:00
-  action:
+  actions:
   - type: turn_on
     device_id: a9d308a70886cf641cd428a93e944f73
     entity_id: 3d9be0e7622c837add41b157327e139c
@@ -357,13 +364,13 @@
 - id: '1699454526040'
   alias: Sensor_BasementStairs_Opened_Work
   description: Opened the basement door on a workday
-  trigger:
+  triggers:
   - type: opened
-    platform: device
-    device_id: 70b85c25e49b84cda78dfe01375ebb0c
-    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    device_id: 5e1f92ea07a267dc04bd66b426decc46
+    entity_id: 9858b27789cb623bed3f5c73eb244ed9
     domain: binary_sensor
-  condition:
+    trigger: device
+  conditions:
   - condition: time
     after: 07:00:00
     before: 09:00:00
@@ -378,26 +385,27 @@
     device_id: 483faa80fc894d0e31f065185ef7013d
     entity_id: 9c704f01dde5587028b99ebc3b691104
     domain: light
-  action:
+  actions:
   - type: turn_off
     device_id: 03e9b5ca05e47d0a2558da76ed7a727c
     entity_id: 879938a09c5604f901849128d5390034
     domain: light
-  - service: scene.turn_on
-    target:
+  - target:
       entity_id: scene.ashley_work_white
     metadata: {}
+    action: scene.turn_on
+    data: {}
   mode: single
 - id: '1699454742061'
   alias: Sensor_BasementStairs_Closed
   description: Closing the basement door
-  trigger:
+  triggers:
   - type: not_opened
-    platform: device
-    device_id: 70b85c25e49b84cda78dfe01375ebb0c
-    entity_id: 5c2f0a1196c372843f7e6966a05c0917
+    device_id: 5e1f92ea07a267dc04bd66b426decc46
+    entity_id: 9858b27789cb623bed3f5c73eb244ed9
     domain: binary_sensor
-  condition:
+    trigger: device
+  conditions:
   - condition: or
     conditions:
     - condition: time
@@ -417,7 +425,7 @@
       weekday:
       - sun
       - sat
-  action:
+  actions:
   - type: turn_off
     device_id: 03e9b5ca05e47d0a2558da76ed7a727c
     entity_id: 879938a09c5604f901849128d5390034
@@ -426,21 +434,21 @@
 - id: '1699732539200'
   alias: Sensor_ExteriorDoor_Opened
   description: Exterior Door is opened when nobody is at home or overnight
-  trigger:
+  triggers:
   - type: opened
-    platform: device
-    device_id: 461f669ddfb56be8737432651c643119
-    entity_id: 02904212e979c2037a325f92ba460d8c
+    device_id: b11e105ce57ad6bfb82239e0494a80dd
+    entity_id: 478ceb8d7f2de931e9972b9bc95b8685
     domain: binary_sensor
-    id: front
-  - type: opened
-    platform: device
-    device_id: 4d9821e62f97fb6489f969d32b45e257
-    entity_id: b499948ae06666be00b03aa47d5dd170
-    domain: binary_sensor
+    trigger: device
     id: porch
-  condition: []
-  action:
+  - type: opened
+    device_id: 86010739e2b060d17967f683cdab8c4c
+    entity_id: 08c8b66506944b31abc98bbaaa4069ac
+    domain: binary_sensor
+    trigger: device
+    id: front
+  conditions: []
+  actions:
   - choose:
     - conditions:
       - condition: trigger
@@ -460,12 +468,12 @@
           after: '23:30:00'
           before: 05:30:00
       sequence:
-      - service: notify.mobile_app_paul_s_iphone
-        data:
+      - data:
           message: Front Door Opened
-      - service: notify.mobile_app_ashley_s_iphone
-        data:
+        action: notify.mobile_app_paul_s_iphone
+      - data:
           message: Front Door Opened
+        action: notify.mobile_app_ashley_s_iphone
     - conditions:
       - condition: trigger
         id:
@@ -484,12 +492,12 @@
           after: '23:30:00'
           before: 05:30:00
       sequence:
-      - service: notify.mobile_app_paul_s_iphone
-        data:
+      - data:
           message: Porch Door Opened
-      - service: notify.mobile_app_ashley_s_iphone
-        data:
+        action: notify.mobile_app_paul_s_iphone
+      - data:
           message: Porch Door Opened
+        action: notify.mobile_app_ashley_s_iphone
   mode: single
 - id: '1702428220009'
   alias: Chore_Complete_Household
@@ -654,24 +662,24 @@
 - id: '1702731777154'
   alias: Garage_Open_Warning
   description: Send Notification when garage door open for 5 minutes
-  trigger:
-  - platform: state
-    entity_id:
-    - cover.garage_door
+  triggers:
+  - entity_id:
+    - cover.ratgdov25i_1bc0dd_door
     from:
     to: open
     for:
       hours: 0
       minutes: 5
       seconds: 0
-  condition: []
-  action:
-  - service: notify.mobile_app_paul_s_iphone
-    data:
+    trigger: state
+  conditions: []
+  actions:
+  - data:
       message: Garage Open for 5 minutes
-  - service: notify.mobile_app_ashley_s_iphone
-    data:
+    action: notify.mobile_app_paul_s_iphone
+  - data:
       message: Garage Open for 5 minutes
+    action: notify.mobile_app_ashley_s_iphone
   mode: single
 - id: '1713832047830'
   alias: Switch_Basement

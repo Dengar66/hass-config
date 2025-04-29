@@ -28,3 +28,21 @@ gaming_lights:
       brightness_pct: 95
   mode: single
   icon: mdi:controller
+arm_blink:
+  sequence:
+  - action: alarm_control_panel.alarm_arm_away
+    metadata: {}
+    data: {}
+    target:
+      device_id: aa1d131eab549176744ff2e0f73098e6
+  alias: Arm Blink
+  description: ''
+disarm_blink:
+  sequence:
+  - action: alarm_control_panel.alarm_disarm
+    metadata: {}
+    data: {}
+    target:
+      device_id: aa1d131eab549176744ff2e0f73098e6
+  alias: Disarm Blink
+  description: ''

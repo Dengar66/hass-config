@@ -23,12 +23,14 @@ cards:
       - type: horizontal-stack
         cards:
           - type: picture
-            image_entity: person.paul
+            #image_entity: person.paul
+            image: /local/images/cards/aiBed.jpg
             tap_action:
               action: navigate
               navigation_path: "#bedroom"
           - type: picture
-            image_entity: person.ashley
+            #image_entity: person.ashley
+            image: /local/images/cards/aiRoborock.jpg
             tap_action:
               action: navigate
               navigation_path: "#vacuum"

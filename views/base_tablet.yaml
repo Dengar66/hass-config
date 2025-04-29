@@ -107,6 +107,7 @@ cards:
                         collapsible_controls: true
                         show_color_temp_control: true
                       - type: custom:mushroom-cover-card
+                        name: "Garage Door"
                         entity: cover.ratgdov25i_1bc0dd_door
               - type: conditional
                 conditions:

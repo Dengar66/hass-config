@@ -7,7 +7,7 @@
   {
     "name": "Banana",
     "id": "0f73e77fe4584ce1a5fc931c91cabeca",
-    "complete": true
+    "complete": false
   },
   {
     "name": "Blueberries",
@@ -17,7 +17,7 @@
   {
     "name": "Strawberries",
     "id": "bf0fe86f7960458da8e2ec07f1ce10ad",
-    "complete": true
+    "complete": false
   },
   {
     "name": "Oranges",
@@ -90,7 +90,7 @@
     "complete": true
   },
   {
-    "name": "salad ",
+    "name": "Salad",
     "id": "6fb29b0fc0ea48f7b16570be09e2caca",
     "complete": true
   },
@@ -102,6 +102,11 @@
   {
     "name": "Cheerios",
     "id": "ae098c9f63bc402991155ac490e8a200",
+    "complete": true
+  },
+  {
+    "name": "Pelligrino",
+    "id": "f697e85863ac4196afe72d3d8625134f",
     "complete": true
   }
 ]
