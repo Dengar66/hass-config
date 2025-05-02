@@ -3,10 +3,6 @@ cards:
   - type: custom:bubble-card
     card_type: pop-up
     hash: "#paul"
-  - type: map
-    entities:
-      - entity: person.paul
-    theme_mode: auto
   - type: custom:button-card
     tap_action:
       action: call-service

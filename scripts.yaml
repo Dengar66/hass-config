@@ -46,3 +46,18 @@ disarm_blink:
       device_id: aa1d131eab549176744ff2e0f73098e6
   alias: Disarm Blink
   description: ''
+vacuum_kitchen:
+  sequence:
+  - action: vacuum.send_command
+    metadata: {}
+    data:
+      command: app_segment_clean
+      params:
+        segments:
+        - 16
+        repeat: 1
+    target:
+      device_id: 10ee55efea29856e5d89b7a7dd5bf3a0
+  alias: Vacuum Kitchen
+  description: ''
+  icon: mdi:robot-vacuum
