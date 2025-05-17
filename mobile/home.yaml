@@ -23,18 +23,31 @@ cards:
       - type: horizontal-stack
         cards:
           - type: picture
-            #image_entity: person.paul
             image: /local/images/cards/aiBed.jpg
             tap_action:
               action: navigate
               navigation_path: "#bedroom"
           - type: picture
-            #image_entity: person.ashley
             image: /local/images/cards/aiRoborock.jpg
             tap_action:
               action: navigate
               navigation_path: "#vacuum"
+      # Row 3
+      - type: horizontal-stack
+        cards:
+          - type: picture
+            image: /local/images/cards/aiPorch.jpg
+            tap_action:
+              action: navigate
+              navigation_path: "#outside"
+          - type: picture
+            image: /local/images/cards/aiLiving.jpg
+            tap_action:
+              action: navigate
+              navigation_path: "#living_room"
   - !include submenu/paul.yaml
   - !include submenu/ashley.yaml
   - !include submenu/master_bedroom.yaml
   - !include submenu/vacuum.yaml
+  - !include submenu/outside.yaml
+  - !include submenu/living_room.yaml

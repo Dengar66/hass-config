@@ -52,12 +52,9 @@ vacuum_kitchen:
     metadata: {}
     data:
       command: app_segment_clean
-      params:
-        segments:
-        - 16
-        repeat: 1
+      params: 16
     target:
-      device_id: 10ee55efea29856e5d89b7a7dd5bf3a0
+      entity_id: vacuum.roborock_q5_max
   alias: Vacuum Kitchen
   description: ''
   icon: mdi:robot-vacuum
