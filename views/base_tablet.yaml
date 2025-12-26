@@ -10,28 +10,58 @@ cards:
     cards:
       - type: horizontal-stack
         cards:
-          - type: "custom:atomic-calendar-revive"
-            style: |
-              ha-card {
-                max-height: 625px;
-              }
-            name: "Next Two Weeks"
-            enableModeChange: true
+          #   - type: "custom:atomic-calendar-revive"
+          #     style: |
+          #       ha-card {
+          #         max-height: 625px;
+          #       }
+          #     name: "Next Two Weeks"
+          #     enableModeChange: true
+          #     entities:
+          #       - entity: calendar.paul_and_ash
+          #       - entity: calendar.kate_hurlbut
+          #       - entity: calendar.kate_carla
+          #       - entity: calendar.kate_monica
+          #     firstDayOfWeek: 1
+          #     maxDaysToShow: 14
+          #     refreshInterval: 7200
+          #     showDate: true
+          #     showWeekDay: true
+          #     showLocation: false
+          #     showCurrentEventLine: false
+          #     showMonth: true
+          #     showDescription: false
+          #     showProgressBar: false
+          - type: custom:calendar-card-pro
             entities:
               - entity: calendar.paul_and_ash
-              - entity: calendar.kate_hurlbut
-              - entity: calendar.kate_carla
-              - entity: calendar.kate_monica
-            firstDayOfWeek: 1
-            maxDaysToShow: 14
-            refreshInterval: 7200
-            showDate: true
-            showWeekDay: true
-            showLocation: false
-            showCurrentEventLine: false
-            showMonth: true
-            showDescription: false
-            showProgressBar: false
+                color: "#49D49D"
+                accent_color: ""
+              - entity: calendar.holidays_in_united_states
+                color: "#DDE392"
+                accent_color: "#DDE392"
+            days_to_show: 14
+            accent_color: "#49D49D"
+            today_indicator_size: 12px
+            weekend_day_color: "#1e88e5"
+            today_day_color: "#FF0000"
+            max_height: 625px;
+            weather:
+              entity: weather.brindley
+              position: both
+              date:
+                show_conditions: true
+                show_high_temp: true
+                show_low_temp: false
+                icon_size: 14px
+                font_size: 12px
+                color: var(--primary-text-color)
+              event:
+                show_conditions: true
+                show_temp: true
+                icon_size: 14px
+                font_size: 12px
+                color: var(--primary-text-color)
           - type: vertical-stack
             cards:
               - type: horizontal-stack

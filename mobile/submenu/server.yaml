@@ -1,0 +1,17 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#server"
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            name: "Disable AdBlocker"
+            entity: script.disable_adblocker
+      - type: vertical-stack
+        cards:
+          - type: custom:button-card
+            name: "Enable AdBlocker"
+            entity: script.enable_adblocker

@@ -58,3 +58,68 @@ vacuum_kitchen:
   alias: Vacuum Kitchen
   description: ''
   icon: mdi:robot-vacuum
+disable_adblocker:
+  sequence:
+  - type: turn_off
+    device_id: a0167c82e6011c23231ad21785a72e2c
+    entity_id: f91d81d6ce8c6d4142c82910f964bac7
+    domain: switch
+  - type: turn_off
+    device_id: d9de740aa8c232127af8bd4bba1be7dc
+    entity_id: 387dac91b434022e97f57ae927057e2b
+    domain: switch
+  alias: Disable_AdBlocker
+  description: ''
+  icon: mdi:pi-hole
+enable_adblocker:
+  sequence:
+  - type: turn_on
+    device_id: a0167c82e6011c23231ad21785a72e2c
+    entity_id: f91d81d6ce8c6d4142c82910f964bac7
+    domain: switch
+  - type: turn_on
+    device_id: d9de740aa8c232127af8bd4bba1be7dc
+    entity_id: 387dac91b434022e97f57ae927057e2b
+    domain: switch
+  alias: Enable_AdBlocker
+  description: ''
+  icon: mdi:pi-hole
+christmastree_twinklewhite:
+  sequence:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.plug_living_room_fireplace
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 3
+      milliseconds: 0
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.fingerbot_christmas_tree
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.fingerbot_christmas_tree
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.fingerbot_christmas_tree
+  alias: ChristmasTree_TwinkleWhite
+  description: ''

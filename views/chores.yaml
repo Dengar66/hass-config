@@ -105,8 +105,26 @@ cards:
                 show_name: false
                 tap_action:
                   action: toggle
-          - type: custom:mushroom-title-card
-            title: 'Dog'
+          - type: horizontal-stack
+            cards:
+              - type: custom:mushroom-title-card
+                title: 'Dog'
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: 200px; !important
+                    }
+              - type: custom:mushroom-title-card
+                card_mod:
+                  style: |
+                    ha-card {
+                      width: 200px; !important
+                    }
+              - type: custom:mushroom-title-card
+              - type: custom:mushroom-title-card
+                title: 'Tech'
+              - type: custom:mushroom-title-card
+              - type: custom:mushroom-title-card
           - type: horizontal-stack
             cards:
               - type: custom:button-card

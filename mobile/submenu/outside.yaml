@@ -5,13 +5,22 @@ cards:
     hash: "#outside"
   - type: horizontal-stack
     cards:
-      - type: button
-        tap_action:
-          action: toggle
-        entity: switch.z_wave_outdoor_smart_plug_with_power_meter
-        name: Porch Lights
-        show_state: false
-        icon: mdi:string-lights
+      - type: vertical-stack
+        cards:
+          - type: button
+            tap_action:
+              action: toggle
+            entity: switch.z_wave_outdoor_smart_plug_with_power_meter
+            name: Porch Lights
+            show_state: false
+            icon: mdi:string-lights
+          - type: button
+            tap_action:
+              action: toggle
+            entity: switch.plug_double_garage_right
+            name: Holiday Lights
+            show_state: false
+            icon: mdi:string-lights
       - type: vertical-stack
         cards:
           - type: custom:mushroom-cover-card

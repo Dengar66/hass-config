@@ -1,0 +1,33 @@
+- sensor:
+    - name: "Spotify Echo Show"
+      state: "7df31662-59b2-40dd-8725-f718c098014e"
+- sensor:
+    - name: "harmony_yamaha"
+      state: "74567895"
+- sensor:
+    - name: "harmony_lgc2"
+      state: "78917962"
+- sensor:
+    - name: "harmony_appletv"
+      state: "79006490"
+- triggers:
+    - trigger: time_pattern
+      hours: "5"
+  actions:
+    - action: weather.get_forecasts
+      target:
+        entity_id: weather.openweathermap
+      data:
+        type: daily
+      response_variable: daily_weather
+  sensor:
+    - name: Daily Low Temperature
+      unique_id: daily_low_temperature
+      unit_of_measurement: "°F"
+      state: >
+        {{ daily_weather['weather.openweathermap'].forecast[0].templow}}
+    - name: Daily High Temperature
+      unique_id: daily_high_temperature
+      unit_of_measurement: "°F"
+      state: >
+        {{ daily_weather['weather.openweathermap'].forecast[0].temperature }}

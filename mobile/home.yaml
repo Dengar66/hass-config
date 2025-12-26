@@ -45,9 +45,18 @@ cards:
             tap_action:
               action: navigate
               navigation_path: "#living_room"
+      # Row 4
+      - type: horizontal-stack
+        cards:
+          - type: picture
+            image: /local/images/dengar.jpg
+            tap_action:
+              action: navigate
+              navigation_path: "#server"
   - !include submenu/paul.yaml
   - !include submenu/ashley.yaml
   - !include submenu/master_bedroom.yaml
   - !include submenu/vacuum.yaml
   - !include submenu/outside.yaml
   - !include submenu/living_room.yaml
+  - !include submenu/server.yaml

@@ -10,3 +10,10 @@ cards:
         tap_action:
           action: navigate
           navigation_path: /mobile-remote/remote
+      - type: button
+        tap_action:
+          action: toggle
+        entity: switch.plug_living_room_fireplace
+        name: Christmas Tree
+        show_state: false
+        icon: mdi:string-lights

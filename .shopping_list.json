@@ -17,7 +17,7 @@
   {
     "name": "Strawberries",
     "id": "bf0fe86f7960458da8e2ec07f1ce10ad",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Oranges",
@@ -72,7 +72,7 @@
   {
     "name": "Breakfast Sammies",
     "id": "bb022437a4264c7db9d86825f0fd688b",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Anti Bacterial Soap",
@@ -107,6 +107,106 @@
   {
     "name": "Pelligrino",
     "id": "f697e85863ac4196afe72d3d8625134f",
+    "complete": false
+  },
+  {
+    "name": "Toilet paper",
+    "id": "1125d1f9899b4267ade99f5e9ae9068d",
     "complete": true
+  },
+  {
+    "name": "Waffles",
+    "id": "a8cc225ebb2a46fb941684fc5f64d387",
+    "complete": true
+  },
+  {
+    "name": "Cheese tray",
+    "id": "2881362424254875a28e43da6023ed07",
+    "complete": true
+  },
+  {
+    "name": "Lotion",
+    "id": "918fb0d88f134819b9810404f2774326",
+    "complete": true
+  },
+  {
+    "name": "Book",
+    "id": "e37d9d5ea4fe497ab044df1a41e9504f",
+    "complete": true
+  },
+  {
+    "name": "Coffee",
+    "id": "38cfed87ec7c42d6941d68c8a479ec2a",
+    "complete": true
+  },
+  {
+    "name": "Bisquik",
+    "id": "8e0804443ae14eb7a00f580826b5dd35",
+    "complete": true
+  },
+  {
+    "name": "Watermelon",
+    "id": "126032121b704724b97def86ebd7d37b",
+    "complete": true
+  },
+  {
+    "name": "Bread",
+    "id": "8235db6d7ff6453489c5f798b190a32e",
+    "complete": true
+  },
+  {
+    "name": "Buns burg and hd",
+    "id": "481dd24805d74be8be509dc64e36eb9e",
+    "complete": true
+  },
+  {
+    "name": "Cold cuts",
+    "id": "40c25a1206cf4718980ce8b632211bdd",
+    "complete": true
+  },
+  {
+    "name": "Lettuce",
+    "id": "25da6feb946d45028eebced1bd8f4e72",
+    "complete": true
+  },
+  {
+    "name": "Tomato",
+    "id": "9e988b4a58094d46a7c6e482438debd5",
+    "complete": true
+  },
+  {
+    "name": "Condiment pack",
+    "id": "542daee99be443d88e09311b0146f599",
+    "complete": true
+  },
+  {
+    "name": "Buffalo chick dip",
+    "id": "d2ff16f588474062a4a0073b9041cdd6",
+    "complete": true
+  },
+  {
+    "name": "Veggie tray",
+    "id": "8d9e864b43964a7c8846167648eaf485",
+    "complete": true
+  },
+  {
+    "name": "Cheese curds",
+    "id": "165a4852491943f191a7560fdb2157b1",
+    "complete": true
+  },
+  {
+    "name": "Grapes",
+    "id": "d86a98fc1d24459999e0fa92b84e3e6a",
+    "complete": false
+  },
+  {
+    "name": "Golf balls",
+    "id": "8ef79f4235474906b6d20d398a6967ef",
+    "complete": false
+  },
+  {
+    "name": "Ice",
+    "id": "8316f817691a4c8f913a823fcdfbb56e",
+    "complete": false
   }
 ]

@@ -769,15 +769,18 @@
 - id: '1719977131825'
   alias: 0_GoodMorning
   description: Daily Morning Automation
-  trigger:
-  - platform: time
-    at: 05:30:00
+  triggers:
+  - at: 05:30:00
     id: '530'
-  - platform: time
-    at: 06:00:00
+    trigger: time
+  - at: 06:00:00
     id: '600'
-  condition: []
-  action:
+    trigger: time
+  - at: 07:00:00
+    id: '700'
+    trigger: time
+  conditions: []
+  actions:
   - choose:
     - conditions:
       - condition: trigger
@@ -813,16 +816,91 @@
           target:
             entity_id: input_boolean.tasks_due
           action: input_boolean.turn_on
+  - choose:
     - conditions:
       - condition: trigger
         id:
         - '600'
+      - condition: time
+        weekday:
+        - fri
+        - thu
+        - wed
+        - tue
+        - mon
       sequence:
-      - action: cover.open_cover
-        metadata: {}
-        data: {}
-        target:
-          device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+      - if:
+        - condition: device
+          type: is_off
+          device_id: 8e94cf1757f9f80659a3c78b2f6b3409
+          entity_id: 6162c3fb222268232a93335ec7bcbca2
+          domain: switch
+        then:
+        - action: script.christmastree_twinklewhite
+          metadata: {}
+          data: {}
+        enabled: true
+      - if:
+        - condition: numeric_state
+          entity_id: sensor.daily_high_temperature
+          above: 80
+        then:
+        - device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+          domain: cover
+          entity_id: 1a12ce7ba4bc806e1c2ae62dfba48516
+          type: set_position
+          position: 25
+        else:
+        - action: cover.open_cover
+          metadata: {}
+          data: {}
+          target:
+            device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+    - conditions:
+      - condition: trigger
+        id:
+        - '600'
+      - condition: time
+        weekday:
+        - sun
+        - sat
+      sequence:
+      - if:
+        - condition: device
+          type: is_off
+          device_id: 8e94cf1757f9f80659a3c78b2f6b3409
+          entity_id: 6162c3fb222268232a93335ec7bcbca2
+          domain: switch
+        then:
+        - action: script.christmastree_twinklewhite
+          metadata: {}
+          data: {}
+        enabled: true
+    - conditions:
+      - condition: trigger
+        id:
+        - '700'
+      - condition: time
+        weekday:
+        - sun
+        - sat
+      sequence:
+      - if:
+        - condition: numeric_state
+          entity_id: sensor.daily_high_temperature
+          above: 80
+        then:
+        - device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+          domain: cover
+          entity_id: 1a12ce7ba4bc806e1c2ae62dfba48516
+          type: set_position
+          position: 25
+        else:
+        - action: cover.open_cover
+          metadata: {}
+          data: {}
+          target:
+            device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
   mode: single
 - id: '1719977190112'
   alias: 0_GoodNight
@@ -855,6 +933,11 @@
           entity_id: f36179d541ba48c13477f9a5e83aa1c2
           type: is_hvac_mode
           hvac_mode: 'off'
+        - condition: device
+          device_id: d8bd9ef1578bae0625d4f25f8eadf8eb
+          domain: cover
+          entity_id: 1a12ce7ba4bc806e1c2ae62dfba48516
+          type: is_open
         then:
         - action: cover.set_cover_position
           metadata: {}
@@ -907,6 +990,11 @@
         data: {}
         target:
           entity_id: input_boolean.has_hazel_been_fed
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.plug_living_room_fireplace
     - conditions:
       - condition: trigger
         id:
@@ -1019,4 +1107,174 @@
         target:
           entity_id: input_boolean.has_hazel_been_fed
         data: {}
+  mode: single
+- id: '1755225231367'
+  alias: Switch_Bedside
+  description: Handles the various actions of the double switch in the bedroom at
+    the bed
+  triggers:
+  - domain: mqtt
+    device_id: 5ec8ce03f6725aa21acef5d3d7a1179f
+    type: action
+    subtype: double_left
+    trigger: device
+    id: d_left
+  - domain: mqtt
+    device_id: 5ec8ce03f6725aa21acef5d3d7a1179f
+    type: action
+    subtype: double_right
+    trigger: device
+    id: d_right
+  - domain: mqtt
+    device_id: 5ec8ce03f6725aa21acef5d3d7a1179f
+    type: action
+    subtype: single_left
+    trigger: device
+    id: s_left
+  - domain: mqtt
+    device_id: 5ec8ce03f6725aa21acef5d3d7a1179f
+    type: action
+    subtype: single_right
+    trigger: device
+    id: s_right
+  - domain: mqtt
+    device_id: 5ec8ce03f6725aa21acef5d3d7a1179f
+    type: action
+    subtype: hold_left
+    trigger: device
+    id: h_left
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - d_left
+      sequence: []
+    - conditions:
+      - condition: trigger
+        id:
+        - d_right
+      sequence: []
+    - conditions:
+      - condition: trigger
+        id:
+        - s_left
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+      - action: remote.send_command
+        metadata: {}
+        data:
+          num_repeats: 2
+          command: menu
+          delay_secs: 1.5
+        target:
+          entity_id: remote.bedroom_appletv
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.0xffffb40e06041611
+    - conditions:
+      - condition: trigger
+        id:
+        - s_right
+      sequence:
+      - delay:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.0xffffb40e06041611
+    - conditions:
+      - condition: trigger
+        id:
+        - h_left
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data:
+          transition: 5
+        target:
+          device_id: 44215a8baf82d30aab7431d12c9e7ad5
+  mode: single
+- id: '1758584923522'
+  alias: Outdoor Lights
+  description: ''
+  triggers:
+  - trigger: time
+    at: 06:00:00
+    id: '600'
+  - trigger: time
+    at: 07:45:00
+    id: '745'
+  - trigger: time
+    at: '16:30:00'
+    id: '1630'
+  - trigger: time
+    at: '23:00:00'
+    id: '2300'
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - '600'
+        - '1630'
+      sequence:
+      - type: turn_on
+        device_id: a25f50e4933cf85de6a90ae26fce7c32
+        entity_id: 74a5fa0058adcdf9015926dc37129dd8
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - '745'
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - type: turn_off
+        device_id: a25f50e4933cf85de6a90ae26fce7c32
+        entity_id: 74a5fa0058adcdf9015926dc37129dd8
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - '2300'
+      sequence: []
+  mode: single
+- id: '1758850270601'
+  alias: Set Weather High and Low
+  description: ''
+  triggers:
+  - trigger: time
+    at: 05:00:00
+  conditions: []
+  actions:
+  - action: weather.get_forecasts
+    metadata: {}
+    data:
+      type: daily
+    target:
+      device_id: 47a2137a14dcccd9f8224a1da30941f2
+    response_variable: response
+  - action: input_number.set_value
+    metadata: {}
+    data: '{{ response[''weather.openweathermap''].forecast[0].temperature }}'
+    target:
+      entity_id: input_number.daily_temp_high
   mode: single

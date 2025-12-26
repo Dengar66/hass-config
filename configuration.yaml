@@ -1,7 +1,8 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-#homeassistant:
+homeassistant:
+  external_url: https://hass.pkh.icu
 #whitelist_external_dirs:
 #  - "/share"
 
@@ -14,8 +15,6 @@ lovelace:
     - url: /hacsfiles/kiosk-mode/kiosk-mode.js
       type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
-      type: module
-    - url: /hacsfiles/spotify-card/spotify-card.js
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
@@ -65,6 +64,7 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+template: !include template.yaml
 
 # HTTPS
 http:
@@ -75,13 +75,14 @@ http:
     - 10.0.1.15
     - 10.0.1.16
     - 10.0.1.66
+    - 162.158.0.0/15
   ip_ban_enabled: true
   login_attempts_threshold: 2
 
 frontend:
   themes: !include_dir_merge_named themes
   extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js
+    - /hacsfiles/lovelace-card-mod/card-mod.js?v4.1.0
 
 # Spotcast
 spotcast:
@@ -111,17 +112,3 @@ sensor:
       - "date"
       - "date_time"
       - "time_date"
-
-template:
-  - sensor:
-      - name: "Spotify Echo Show"
-        state: "7df31662-59b2-40dd-8725-f718c098014e"
-  - sensor:
-      - name: "harmony_yamaha"
-        state: "74567895"
-  - sensor:
-      - name: "harmony_lgc2"
-        state: "78917962"
-  - sensor:
-      - name: "harmony_appletv"
-        state: "79006490"
