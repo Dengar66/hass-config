@@ -61,12 +61,12 @@ vacuum_kitchen:
 disable_adblocker:
   sequence:
   - type: turn_off
-    device_id: a0167c82e6011c23231ad21785a72e2c
-    entity_id: f91d81d6ce8c6d4142c82910f964bac7
+    device_id: 494d9c160b626e71626f4e33ba48e0de
+    entity_id: b2136615c194a264b124cca55e342fbe
     domain: switch
   - type: turn_off
-    device_id: d9de740aa8c232127af8bd4bba1be7dc
-    entity_id: 387dac91b434022e97f57ae927057e2b
+    device_id: ea6e405e99e822d3ee29e76c6bf9ce9c
+    entity_id: 67bedcfc1cf997c554fc5f1b2f1194d9
     domain: switch
   alias: Disable_AdBlocker
   description: ''
@@ -74,12 +74,12 @@ disable_adblocker:
 enable_adblocker:
   sequence:
   - type: turn_on
-    device_id: a0167c82e6011c23231ad21785a72e2c
-    entity_id: f91d81d6ce8c6d4142c82910f964bac7
+    device_id: 494d9c160b626e71626f4e33ba48e0de
+    entity_id: b2136615c194a264b124cca55e342fbe
     domain: switch
   - type: turn_on
-    device_id: d9de740aa8c232127af8bd4bba1be7dc
-    entity_id: 387dac91b434022e97f57ae927057e2b
+    device_id: ea6e405e99e822d3ee29e76c6bf9ce9c
+    entity_id: 67bedcfc1cf997c554fc5f1b2f1194d9
     domain: switch
   alias: Enable_AdBlocker
   description: ''

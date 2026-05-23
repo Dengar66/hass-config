@@ -8,7 +8,7 @@ homeassistant:
 
 # Lovelace Dashboard Mode, remove to no longer use YAML
 lovelace:
-  mode: yaml
+  resource_mode: yaml
   resources:
     - url: /hacsfiles/sidebar-card/sidebar-card.js
       type: module
@@ -37,6 +37,12 @@ lovelace:
     - url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
       type: module
   dashboards:
+    tablet-yaml:
+      mode: yaml
+      title: Tablet
+      icon: mdi:tablet-dashboard
+      show_in_sidebar: true
+      filename: ui-lovelace.yaml
     mobile-remote:
       mode: yaml
       title: Remote
@@ -82,7 +88,7 @@ http:
 frontend:
   themes: !include_dir_merge_named themes
   extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js?v4.1.0
+    - /hacsfiles/lovelace-card-mod/card-mod.js?v4.2.1
 
 # Spotcast
 spotcast:

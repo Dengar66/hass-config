@@ -839,7 +839,7 @@
         - action: script.christmastree_twinklewhite
           metadata: {}
           data: {}
-        enabled: true
+        enabled: false
       - if:
         - condition: numeric_state
           entity_id: sensor.daily_high_temperature
@@ -875,7 +875,7 @@
         - action: script.christmastree_twinklewhite
           metadata: {}
           data: {}
-        enabled: true
+        enabled: false
     - conditions:
       - condition: trigger
         id:
@@ -995,16 +995,12 @@
         data: {}
         target:
           entity_id: switch.plug_living_room_fireplace
+        enabled: false
     - conditions:
       - condition: trigger
         id:
         - third
-      sequence:
-      - metadata: {}
-        data: {}
-        target:
-          entity_id: switch.tree
-        action: switch.turn_off
+      sequence: []
   mode: single
 - id: '1721602046255'
   alias: LeakSensor_WaterDetected
@@ -1063,11 +1059,11 @@
 - id: '1721606025826'
   alias: 0_GoodEvening
   description: Daily Evening Automation
-  trigger:
-  - platform: time
-    at: '17:00:00'
-  condition: []
-  action:
+  triggers:
+  - at: '17:00:00'
+    trigger: time
+  conditions: []
+  actions:
   - if:
     - condition: time
       weekday:
@@ -1081,12 +1077,6 @@
       device_id: 03e9b5ca05e47d0a2558da76ed7a727c
       entity_id: 879938a09c5604f901849128d5390034
       domain: light
-  - service: switch.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: switch.tree
-    enabled: false
   mode: single
 - id: '1728346617282'
   alias: 0_GoodAfternoon
