@@ -28,10 +28,10 @@ cards:
               action: navigate
               navigation_path: "#bedroom"
           - type: picture
-            image: /local/images/cards/aiRoborock.jpg
+            image: /local/images/cards/aiLiving.jpg
             tap_action:
               action: navigate
-              navigation_path: "#vacuum"
+              navigation_path: "#living_room"
       # Row 3
       - type: horizontal-stack
         cards:
@@ -41,13 +41,18 @@ cards:
               action: navigate
               navigation_path: "#outside"
           - type: picture
-            image: /local/images/cards/aiLiving.jpg
+            image: /local/images/cards/aibasement2.jpg
             tap_action:
               action: navigate
-              navigation_path: "#living_room"
+              navigation_path: "#basement"
       # Row 4
       - type: horizontal-stack
         cards:
+          - type: picture
+            image: /local/images/cards/aiRoborock.jpg
+            tap_action:
+              action: navigate
+              navigation_path: "#vacuum"
           - type: picture
             image: /local/images/dengar.jpg
             tap_action:
@@ -59,4 +64,5 @@ cards:
   - !include submenu/vacuum.yaml
   - !include submenu/outside.yaml
   - !include submenu/living_room.yaml
+  - !include submenu/basement.yaml
   - !include submenu/server.yaml

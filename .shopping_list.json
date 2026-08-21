@@ -7,7 +7,7 @@
   {
     "name": "Banana",
     "id": "0f73e77fe4584ce1a5fc931c91cabeca",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Blueberries",
@@ -87,7 +87,7 @@
   {
     "name": "Pizza roll",
     "id": "ab8c4aea9a854ffda7a075f2a65d88b3",
-    "complete": true
+    "complete": false
   },
   {
     "name": "Salad",
@@ -97,7 +97,7 @@
   {
     "name": "Corn dogs",
     "id": "91ea2ea01f1145d79825e6e24fc8f157",
-    "complete": true
+    "complete": false
   },
   {
     "name": "Cheerios",
@@ -107,7 +107,7 @@
   {
     "name": "Pelligrino",
     "id": "f697e85863ac4196afe72d3d8625134f",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Toilet paper",
@@ -197,16 +197,46 @@
   {
     "name": "Grapes",
     "id": "d86a98fc1d24459999e0fa92b84e3e6a",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Golf balls",
     "id": "8ef79f4235474906b6d20d398a6967ef",
-    "complete": false
+    "complete": true
   },
   {
     "name": "Ice",
     "id": "8316f817691a4c8f913a823fcdfbb56e",
+    "complete": true
+  },
+  {
+    "name": "Pouch",
+    "id": "03d8369c179a4452a179327e20ccc3ff",
+    "complete": true
+  },
+  {
+    "name": "Applesauce",
+    "id": "2d751360b39e4942959aadd66c46501c",
+    "complete": true
+  },
+  {
+    "name": "Quartz ziploc",
+    "id": "3bdd2f5b0ae14d408b1a1cee86e2d408",
+    "complete": true
+  },
+  {
+    "name": "Kleenex",
+    "id": "64440ed53863479db288a1bc898a6660",
+    "complete": true
+  },
+  {
+    "name": "Yogurt",
+    "id": "d747f8d133dd4ca4af37e20a78564063",
+    "complete": true
+  },
+  {
+    "name": "Animal crakcers",
+    "id": "b8579446a37846dbad61e0e919844206",
     "complete": false
   }
 ]

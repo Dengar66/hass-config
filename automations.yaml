@@ -223,12 +223,12 @@
 - id: '1696390132586'
   alias: Paul Leaving Sentry
   description: ''
-  trigger:
-  - platform: zone
-    entity_id: device_tracker.paul_s_iphone
+  triggers:
+  - entity_id: device_tracker.paul_s_iphone
     zone: zone.sentry
     event: leave
-  condition:
+    trigger: zone
+  conditions:
   - condition: time
     after: '15:00:00'
     weekday:
@@ -236,8 +236,8 @@
     - wed
     - thu
     before: '18:00:00'
-  action:
-  - device_id: d86d92283852d598ca557feaee65c885
+  actions:
+  - device_id: 4f08e4286e32668a24288dd14078005c
     domain: mobile_app
     type: notify
     message: Paul is on the way home
@@ -1267,4 +1267,103 @@
     data: '{{ response[''weather.openweathermap''].forecast[0].temperature }}'
     target:
       entity_id: input_number.daily_temp_high
+  mode: single
+- id: '1779584135189'
+  alias: Kate Opened Door Overnight
+  description: Alerts when Kate opens her door but should be sleeping
+  triggers:
+  - type: opened
+    device_id: a4c46e074cc32527070e925b03ef200b
+    entity_id: 2db559ad337608bf12c1f72ebde3cf1f
+    domain: binary_sensor
+    trigger: device
+    id: kate
+  conditions: []
+  actions:
+  - if:
+    - condition: or
+      conditions:
+      - condition: time
+        after: '21:00:00'
+        before: 07:30:00
+      - condition: state
+        entity_id: binary_sensor.sleepnumber_master_paul_is_in_bed
+        state:
+        - 'on'
+      - condition: state
+        entity_id: binary_sensor.sleepnumber_master_ashley_is_in_bed
+        state:
+        - 'on'
+    then:
+    - data:
+        message: Kate Opened Door
+      action: notify.mobile_app_paul_s_iphone
+    - data:
+        message: Kate Opened Door
+      action: notify.mobile_app_ashley_s_iphone
+  mode: single
+- id: '1779584307330'
+  alias: Plug_UnderBed_OffTimer
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: b144a8b9736b42476267be4574bfa446
+    entity_id: fa2f8743df7e08467f7c54029535abbe
+    domain: switch
+    trigger: device
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: b144a8b9736b42476267be4574bfa446
+    entity_id: fa2f8743df7e08467f7c54029535abbe
+    domain: switch
+  mode: single
+- id: '1779625165973'
+  alias: Sensor_KateDoor_DayOpen
+  description: Alerts when Kate opens her door but should be sleeping
+  triggers:
+  - type: opened
+    device_id: a4c46e074cc32527070e925b03ef200b
+    entity_id: 2db559ad337608bf12c1f72ebde3cf1f
+    domain: binary_sensor
+    trigger: device
+    id: kate
+  conditions: []
+  actions:
+  - if:
+    - condition: time
+      after: '11:00:00'
+      before: '17:00:00'
+    then:
+    - data:
+        message: Kate Opened Door
+      action: notify.mobile_app_paul_s_iphone
+    - data:
+        message: Kate Opened Door
+      action: notify.mobile_app_ashley_s_iphone
+  mode: single
+- id: '1779673600323'
+  alias: Button_UnderBed_Pressed
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 827ffb97b31a71ed7ea3dded332096e2
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - type: toggle
+    device_id: b144a8b9736b42476267be4574bfa446
+    entity_id: fa2f8743df7e08467f7c54029535abbe
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
   mode: single

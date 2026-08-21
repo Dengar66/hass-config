@@ -1,8 +1,7 @@
-type: vertical-stack
+type: custom:bubble-card
+card_type: pop-up
+hash: "#server"
 cards:
-  - type: custom:bubble-card
-    card_type: pop-up
-    hash: "#server"
   - type: horizontal-stack
     cards:
       - type: vertical-stack

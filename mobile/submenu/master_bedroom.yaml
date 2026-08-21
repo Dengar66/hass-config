@@ -1,8 +1,7 @@
-type: vertical-stack
+type: custom:bubble-card
+card_type: pop-up
+hash: "#bedroom"
 cards:
-  - type: custom:bubble-card
-    card_type: pop-up
-    hash: "#bedroom"
   - type: custom:mushroom-cover-card
     entity: cover.master_blinds
     show_position_control: false
@@ -20,10 +19,11 @@ cards:
             icon: mdi:lamp
             use_light_color: true
           - type: custom:mushroom-entity-card
-            name: "Master TV"
+            name: "Kate's Bed Lights"
             tap_action:
               action: toggle
-            entity: switch.plug_master_tv
+            entity: switch.plug_underbed
+            icon: mdi:bed-single-outline
       - type: custom:button-card
         tap_action:
           action: call-service

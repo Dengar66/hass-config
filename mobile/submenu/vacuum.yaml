@@ -1,8 +1,7 @@
-type: vertical-stack
+type: custom:bubble-card
+card_type: pop-up
+hash: "#vacuum"
 cards:
-  - type: custom:bubble-card
-    card_type: pop-up
-    hash: "#vacuum"
   - type: custom:button-card
     entity: script.vacuum_kitchen
   - type: custom:vacuum-card

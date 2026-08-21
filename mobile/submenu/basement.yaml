@@ -1,0 +1,12 @@
+type: custom:bubble-card
+card_type: pop-up
+hash: "#basement"
+cards:
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.stair_bookcase
+            icon: mdi:light-recessed
+            use_light_color: true
